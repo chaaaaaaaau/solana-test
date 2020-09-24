@@ -2,7 +2,7 @@
 npm install 
 for module @solana/web3.js, bs58
 
-add keypair.json to wallet folder
+add any keypair.json to wallet folder and modify the wallet name in line 101
 
 to watch the output: node test3.js
 
