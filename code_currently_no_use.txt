@@ -1,0 +1,41 @@
+let status = await connection.getSignatureStatus(signature);
+  console.log(status);
+
+  let blockTime = await connection.getBlockTime(status.value.slot);
+  console.log(blockTime);
+
+  let confirmedBlock_1 = await connection.getConfirmedBlock(status.value.slot);
+  console.log(confirmedBlock_1);
+
+  for (let i = 0; i < confirmedBlock_1.transactions.length; i++) {
+    console.log(confirmedBlock_1.transactions[i].transaction);
+  }
+
+  for (let i = 0; i < confirmedBlock_1.transactions.length; i++) {
+    /* console.log(
+      confirmedBlock_1.transactions[
+        i
+      ].transaction.signatures[0].signature.toString()
+    ); */
+    console.log(confirmedBlock_1.transactions[i].transaction.recentBlockhash);
+    for (
+      let j = 0;
+      j <
+      confirmedBlock_1.transactions[i].transaction.instructions[0].keys.length;
+      j++
+    ) {
+      console.log(
+        confirmedBlock_1.transactions[i].transaction.instructions[0].keys[
+          j
+        ].pubkey.toString()
+      );
+    }
+
+    console.log(
+      confirmedBlock_1.transactions[
+        i
+      ].transaction.instructions[0].programId.toString()
+    );
+    console.log("------");
+    //console.log(confirmedBlock_1.transactions[i].meta);
+  }
